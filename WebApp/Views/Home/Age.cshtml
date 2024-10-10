@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Age Calculator";
+}
+
+<h2>Age Calculator</h2>
+
+<form method="get" action="/Home/Age">
+    <div class="form-group">
+        <label for="birthDate">Enter your birth date:</label>
+        <input type="date" id="birthDate" name="birthDate" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate Age</button>
+</form>
+
+@if (ViewBag.Years != null)
+{
+    <h3>Your Age</h3>
+    <p>You are @ViewBag.Years years, @ViewBag.Months months, and @ViewBag.Days days old.</p>
+}
