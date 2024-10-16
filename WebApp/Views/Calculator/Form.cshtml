@@ -1,36 +1,30 @@
-@model Controller
+@model Calculator
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-6">
-            <h2>Calculator</h2>
-            <form action="Result" method="GET">
-                <div class="mb-3">
-                    <label class="form-label" for="x">Number 1</label>
-                    <input class="form-control" type="number" name="x" step="0.00001" id="x"/>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="op">Operator</label>
-                    <select class="form-control" name="op" id="op">
-                        <option value="Add">+</option>
-                        <option value="Subtract">-</option>
-                        <option value="Multiply">*</option>
-                        <option value="Divide">/</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="y">Number 2</label>
-                    <input class="form-control" type="number" name="y" step="0.00001" id="y"/>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">Calculate</button>
-                </div>
-            </form>
-        </div>
+<form action="Result" method="POST">
+    <div class="mb-3">
+        <label class="form-label" for="x">Number 1</label>
+        <input class="form-control" type="number" name="x" step="0.00001" id="x"/>
     </div>
-</div>
+    <div class="mb-3">
+        <label class="form-label" for="operator">Operator</label>
+        <select class="form-control" name="Operator" id="operator">
+            <option value="Add">+</option>
+            <option value="Subtract">−</option>
+            <option value="Multiply">×</option>
+            <option value="Divide">÷</option>
+        </select>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="y">Number 2</label>
+        <input class="form-control" type="number" name="y" step="0.00001" id="y"/>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Calculate</button>
+    </div>
+</form>

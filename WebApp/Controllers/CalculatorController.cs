@@ -11,51 +11,14 @@ public class CalculatorController : Controller
         return View();
     }
 
-    public IActionResult Result(Operators? op, double? x, double? y)
+    public IActionResult Result(Calculator model)
     {
-        if (x is null || y is null)
+        if (!model.IsValid())
         {
-            ViewData["Error"] = "Please fill all values";
-            return View("CalculatorError");
+            return View("Error");
         }
-
-        double? result = 0.0d;
-
-        switch (op)
-        {
-            case Operators.Add:
-                result = x + y;
-                ViewBag.Operator = "+";
-                break;
-            case Operators.Subtract:
-                result = x - y;
-                ViewBag.Operator = "-";
-                break;
-            case Operators.Divide:
-                if (y == 0)
-                {
-                    ViewData["Error"] = "Cannot divide by zero";
-                    return View("CalculatorError");
-                }
-
-                result = x / y;
-                ViewBag.Operator = "/";
-                break;
-            case Operators.Multiply:
-                result = x * y;
-                ViewBag.Operator = "*";
-                break;
-            default:
-                ViewData["Error"] = "Invalid operation";
-                return View("CalculatorError");
-        }
-
-        ViewBag.Result = result;
-        ViewBag.X = x;
-        ViewBag.Y = y;
-        return View();
+        return View(model);
     }
-
     public IActionResult Form()
     {
         return View();

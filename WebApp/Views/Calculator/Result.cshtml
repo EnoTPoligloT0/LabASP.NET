@@ -1,9 +1,8 @@
-@model dynamic
+@model Calculator
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Calculation Result";
     Layout = "_Layout";
 }
 
-<h3>Calculation Result</h3>
-<p>@ViewBag.X @ViewBag.Operator @ViewBag.Y = @ViewBag.Result</p>
+<h3>@Model.X @Model.Op @Model.Y = <b class="text-danger">@Model.Calculate()</b></h3>
