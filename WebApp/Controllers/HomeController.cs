@@ -26,47 +26,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Calculator(Operators? op, double? x, double? y)
-    {
-        // var op = Request.Query["op"];
-        // var x = double.Parse(Request.Query["x"]);
-        // var y = double.Parse(Request.Query["y"]);
-        if (x is null || y is null)
-        {
-            ViewData["Error"] = "Please fill all values";
-            return View("CalculatorError");
-        }
-        
-        
-        double? result = 0.0d;
-        
-        switch (op)
-        {
-            case Operators.Add:
-                result = x + y;
-                ViewBag.Operator = "+";
-                break;
-            case Operators.Sub:
-                result = x - y;
-                ViewBag.Operator = "-";
-                break;
-            case Operators.Div:
-                result = x / y;
-                ViewBag.Operator = "/";
-                break;
-            case Operators.Mul:
-                result = x * y;
-                ViewBag.Operator = "*";
-                break;
-            default:
-                ViewBag.Error = "Invalid operation";
-                return View("CalculatorError");
-        }
-        ViewBag.Result = result;
-        ViewBag.X = x;
-        ViewBag.y = y;
-        return View();
-    }
     
     public IActionResult Age(DateTime birthDate)
     {
@@ -113,8 +72,4 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
     
-}
-public enum Operators
-{
-    Add,Sub,Mul,Div
 }
