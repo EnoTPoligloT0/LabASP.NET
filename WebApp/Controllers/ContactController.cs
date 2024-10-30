@@ -1,4 +1,5 @@
 using LabProject.Models;
+using LabProject.Models.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabProject.Controllers;
@@ -6,48 +7,16 @@ namespace LabProject.Controllers;
 public class ContactController : Controller
 {
     // List kontaktow 
-    private static Dictionary<int, ContactModel> _contacts = new()
-    {
-        {
-            1, new ContactModel()
-            {
-                Id = 1,
-                FirstName = "John",
-                LastName = "Smith",
-                Email = "john@gmail.com",
-                PhoneNumber = "888888888",
-                BirthDate = new(1984, 10, 26)
-            }
-        },
-        {
-            2, new ContactModel()
-            {
-                Id = 2,
-                FirstName = "Ela",
-                LastName = "McDonald",
-                Email = "ela@gmail.com",
-                PhoneNumber = "777222444",
-                BirthDate = new(1986, 9, 26)
-            }
-        },
-        {
-            3, new ContactModel()
-            {
-                Id = 3,
-                FirstName = "Paul",
-                LastName = "Kings",
-                Email = "paul@gmail.com",
-                PhoneNumber = "856312534",
-                BirthDate = new(1999, 5, 26)
-            }
-        }
-    };
+    private readonly IContactService _contactService;
 
-    private static int _currentId = 3;
-    
+    public ContactController(IContactService contactService)
+    {
+        _contactService = contactService;
+    }
+
     public IActionResult Index()
     {
-        return View(_contacts);
+        return View(_contactService.GetAll());
     }
 
     //formularz dodania kontaktu
@@ -66,19 +35,38 @@ public class ContactController : Controller
             return View();
         }
         
-        model.Id = ++_currentId;
-        _contacts.Add(model.Id, model);
-        return View("Index", _contacts);
+        _contactService.Add(model);
+        return RedirectToAction(nameof(Index));
     }
 
     public IActionResult Delete(int id)
     {
-        _contacts.Remove(id);
-        return View("Index", _contacts);
+        _contactService.Delete(id);
+        return RedirectToAction(nameof(Index));
+        
     }
 
     public IActionResult Details(int id)
     {
-        return View(_contacts[id]);
+        var contact = _contactService.GetById(id);
+        return View(contact); 
+
+    }
+
+    public IActionResult Edit(int id)
+    {
+        return View(_contactService.GetById(id));
+    }
+
+    [HttpPost]
+    public IActionResult Edit(ContactModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View();
+        }
+        
+        _contactService.Update(model);
+        return RedirectToAction(nameof(Index));
     }
 }

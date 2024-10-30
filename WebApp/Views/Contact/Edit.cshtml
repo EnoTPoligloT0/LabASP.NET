@@ -5,8 +5,9 @@
     Layout = "_Layout";
 }
 
-<h2>Dodaj kontakt</h2>
-<form asp-action="Add" method="post">
+<h2>Edytuj kontakt</h2>
+<form asp-action="Edit" method="post">
+    <input asp-for="Id"/>
     <div class="mb-3">
         <label class="form-label" asp-for="FirstName"></label>
         <input class="form-control" asp-for="FirstName"/>
