@@ -6,5 +6,5 @@ public interface IContactService
     void Update(ContactModel conatact);
     void Delete(int id);
     List<ContactModel> GetAll();
-    ContactModel GetById(int id);
+    ContactModel? GetById(int id);
 }
