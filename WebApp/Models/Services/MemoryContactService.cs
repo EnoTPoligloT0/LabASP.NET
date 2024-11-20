@@ -1,75 +1,60 @@
-namespace LabProject.Models.Services;
-
-public class MemoryContactService : IContactService
-{
-    private static Dictionary<int, ContactModel> _contacts = new()
-    {
-        {
-            1, new ContactModel()
-            {
-                Category = Category.Business,
-                Id = 1,
-                FirstName = "John",
-                LastName = "Smith",
-                Email = "john@gmail.com",
-                PhoneNumber = "888888888",
-                BirthDate = new(1984, 10, 26)
-            }
-        },
-        {
-            2, new ContactModel()
-            {
-                Category = Category.Friend,
-                Id = 2,
-                FirstName = "Ela",
-                LastName = "McDonald",
-                Email = "ela@gmail.com",
-                PhoneNumber = "777222444",
-                BirthDate = new(1986, 9, 26)
-            }
-        },
-        {
-            3, new ContactModel()
-            {
-                Category = Category.Family,
-                Id = 3,
-                FirstName = "Paul",
-                LastName = "Kings",
-                Email = "paul@gmail.com",
-                PhoneNumber = "856312534",
-                BirthDate = new(1999, 5, 26)
-            }
-        }
-    };
-
-    private static int _currentId = 3;
-
-    public void Add(ContactModel model)
-    {
-        model.Id = ++_currentId;
-        _contacts.Add(model.Id, model);
-    }
-
-    public void Update(ContactModel contact)
-    {
-        if (_contacts.ContainsKey(contact.Id))
-        {
-            _contacts[contact.Id] = contact;
-        }
-    }
-
-    public void Delete(int id)
-    {
-        _contacts.Remove(id);
-    }
-
-    public List<ContactModel> GetAll()
-    {
-        return _contacts.Values.ToList();
-    }
-
-    public ContactModel GetById(int id)
-    {
-        return _contacts[id];
-    }
-}
+// using Microsoft.EntityFrameworkCore;
+//
+// namespace LabProject.Models.Services
+// {
+//     public class DatabaseContactService : IContactService
+//     {
+//         private readonly AppDbContext _context;
+//
+//         public DatabaseContactService(AppDbContext context)
+//         {
+//             _context = context;
+//         }
+//
+//         public void Add(ContactModel contact)
+//         {
+//             var entity = ContactMapper.ToEntity(contact);
+//             _context.Contacts.Add(entity);
+//             _context.SaveChanges();
+//         }
+//
+//         public void Update(ContactModel contact)
+//         {
+//             var entity = ContactMapper.ToEntity(contact);
+//             _context.Contacts.Update(entity);
+//             _context.SaveChanges();
+//         }
+//
+//         public void Delete(int id)
+//         {
+//             var contact = _context.Contacts.Find(id);
+//             if (contact != null)
+//             {
+//                 _context.Contacts.Remove(contact);
+//                 _context.SaveChanges();
+//             }
+//         }
+//
+//         public List<ContactModel> GetAll()
+//         {
+//             return _context.Contacts
+//                 .Include(c => c.Organization)
+//                 .Select(ContactMapper.FromEntity)
+//                 .ToList();
+//         }
+//
+//         public ContactModel GetById(int id)
+//         {
+//             var contact = _context.Contacts
+//                 .Include(c => c.Organization)
+//                 .FirstOrDefault(c => c.Id == id);
+//
+//             return contact != null ? ContactMapper.FromEntity(contact) : null;
+//         }
+//
+//         public List<OrganizationEntity> GetAllOrganizations()
+//         {
+//             return _context.Organizations.ToList();
+//         }
+//     }
+// }

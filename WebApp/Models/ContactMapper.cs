@@ -1,3 +1,5 @@
+using LabProject.Migrations;
+
 namespace LabProject.Models;
 
 public class ContactMapper
@@ -12,7 +14,9 @@ public class ContactMapper
             FirstName = arg.FirstName,
             LastName = arg.LastName,
             PhoneNumber = arg.PhoneNumber,
-            Category = arg.Category
+            Category = arg.Category,
+            Organization = arg.Organization,
+            OrganizationId = arg.OrganizationId,
         };
         
         
@@ -28,7 +32,9 @@ public class ContactMapper
             FirstName = arg.FirstName,
             LastName = arg.LastName,
             PhoneNumber = arg.PhoneNumber,
-            Category = arg.Category
+            Category = arg.Category,
+            OrganizationId = arg.OrganizationId,
+            Organization = arg.Organization
         };
     }
 }

@@ -1,18 +1,33 @@
 @model ContactModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Szczegóły kontaktu";
     Layout = "_Layout";
 }
 
-<h2>Szczegoly kontaktu</h2>
+<h2>Szczegóły kontaktu</h2>
 
 <h3>@Model.FirstName @Model.LastName</h3>
 
-<p>Email</p>
+<p><strong>Email:</strong></p>
 <h4>@Model.Email</h4>
 
-<p>Numer telefonu</p>
+<p><strong>Numer telefonu:</strong></p>
 <h4>@Model.PhoneNumber</h4>
 
-//todo add powrot
+<p><strong>Kategoria:</strong></p>
+<h4>@Model.Category</h4>
+
+@if (Model.Organization != null)
+{
+    <p><strong>Organizacja:</strong></p>
+    <h4>@Model.Organization.Name</h4>
+}
+else
+{
+    <p><strong>Organizacja:</strong> brak</p>
+}
+
+<!-- Back to Contacts button -->
+<a class="btn btn-primary" asp-action="Index" asp-controller="Contact">Powrót do kontaktów</a>
+
