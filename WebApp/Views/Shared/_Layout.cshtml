@@ -25,7 +25,25 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" asp-controller="Calculator" asp-action="Form">Calculator</a>
+                    </li> 
+                    <li>
+                        <a class="nav-link text-dark" asp-controller="Birth" asp-action="Form">Birth</a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
+                    </li>
+
+                    @* <li class="nav-item"> *@
+                    @*     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Age">Age Calculator</a> *@
+                    @* </li> *@
                 </ul>
+                <partial name="_LoginPartial"/>
             </div>
         </div>
     </nav>

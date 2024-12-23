@@ -1,0 +1,8 @@
+@model Calculator
+
+@{
+    ViewBag.Title = "Calculation Result";
+    Layout = "_Layout";
+}
+
+<h3>@Model.X @Model.Op @Model.Y = <b class="text-danger">@Model.Calculate()</b></h3>
