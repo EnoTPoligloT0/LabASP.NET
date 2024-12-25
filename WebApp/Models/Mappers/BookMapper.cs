@@ -10,6 +10,7 @@ public static class BookMapper
     {
         return new BookEntity()
         {
+            BookId = model.BookId,
             Title = model.Title,
             Isbn13 = model.Isbn13,
             NumPages = model.NumPages,
@@ -21,6 +22,7 @@ public static class BookMapper
     {
         return new BookModel
         {
+            BookId = entity.BookId,
             Title = entity.Title,
             Isbn13 = entity.Isbn13,
             NumPages = entity.NumPages,

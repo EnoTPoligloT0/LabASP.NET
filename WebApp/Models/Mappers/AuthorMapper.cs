@@ -10,6 +10,7 @@ public static class AuthorMapper
     {
         return new AuthorEntity
         {
+            AuthorId = model.AuthorId,
             AuthorName = model.AuthorName
         };
     }
