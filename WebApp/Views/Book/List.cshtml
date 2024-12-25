@@ -1,0 +1,45 @@
+﻿@model List<LabProject.Models.GravityModels.BookModel>
+
+@{
+ViewData["Title"] = "Books List";
+int currentPage = (int)ViewData["CurrentPage"];
+int totalPages = (int)ViewData["TotalPages"];
+int maxPagesToShow = 5;
+int startPage = Math.Max(1, currentPage - maxPagesToShow);
+int endPage = Math.Min(totalPages, currentPage + maxPagesToShow);
+}
+
+<h2>Books List</h2>
+
+<p>
+    <a href="@Url.Action("Add", "Book")" class="btn btn-primary">Add New Book</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>Pages</th>
+        <th>Publication Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var book in Model)
+    {
+    <tr>
+        <td>@book.Title</td>
+        <td>@book.Isbn13</td>
+        <td>@book.NumPages</td>
+        <td>@book.PublicationDate?.ToString("yyyy-MM-dd")</td>
+        <td>
+            <a href="@Url.Action("Details", "Book", new { id = book.BookId })" class="btn btn-info">View</a>
+            <a href="@Url.Action("Edit", "Book", new { id = book.BookId })" class="btn btn-warning">Edit</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+@Html.Partial("_Pagination")
