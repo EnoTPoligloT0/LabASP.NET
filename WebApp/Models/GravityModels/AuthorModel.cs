@@ -5,6 +5,7 @@ namespace LabProject.Models.GravityModels;
 
 public class AuthorModel
 {
+    public int AuthorId { get; set; }
     [Required]
     public string AuthorName { get; set; }
 
