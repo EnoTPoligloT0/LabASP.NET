@@ -1,0 +1,16 @@
+﻿@model LabProject.Models.GravityModels.AuthorModel
+
+@{
+    ViewData["Title"] = "Edit Author";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label for="AuthorName">Author Name</label>
+        <input type="text" asp-for="AuthorName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-warning">Save Changes</button>
+    <a href="@Url.Action("List", "Author")" class="btn btn-danger">Cancel</a>
+</form>

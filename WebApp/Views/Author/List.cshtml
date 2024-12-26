@@ -1,0 +1,46 @@
+﻿@model List<LabProject.Models.GravityModels.AuthorModel>
+
+@{
+    ViewData["Title"] = "Authors List";
+    int currentPage = (int)ViewData["CurrentPage"];
+    int totalPages = (int)ViewData["TotalPages"];
+    int maxPagesToShow = 5;
+}
+
+<h2>Authors List</h2>
+
+<p>
+    <a href="@Url.Action("Add", "Author")" class="btn btn-primary">Add New Author</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Author Name</th>
+        <th>Books</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var author in Model)
+    {
+        <tr>
+            <td>@author.AuthorName</td>
+            <td>
+                @foreach (var book in author.Books)
+                {
+                    <a href="@Url.Action("Edit", "Book", new { id = book.BookId })" class="btn btn-link">@book.Title</a><br />
+                }
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Author", new { id = author.AuthorId })" class="btn btn-warning">Edit</a>
+                <form action="@Url.Action("Delete", "Author", new { id = author.AuthorId })" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@Html.Partial("_Pagination")
