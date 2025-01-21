@@ -1,0 +1,20 @@
+﻿@model LabProject.Models.GravityModels.BookModel
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>@Model.Title</h2>
+
+<div>
+    <strong>ISBN:</strong> @Model.Isbn13
+</div>
+<div>
+    <strong>Pages:</strong> @Model.NumPages
+</div>
+<div>
+    <strong>Publication Date:</strong> @Model.PublicationDate?.ToString("yyyy-MM-dd")
+</div>
+
+<a href="@Url.Action("Edit", "Book", new { id = Model.BookId })" class="btn btn-warning">Edit</a>
+<a href="@Url.Action("List", "Book")" class="btn btn-primary">Back to List</a>

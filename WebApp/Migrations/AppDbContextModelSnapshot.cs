@@ -68,7 +68,7 @@ namespace LabProject.Migrations
                             Id = 1,
                             BirthDate = new DateOnly(1980, 1, 1),
                             Category = 0,
-                            Created = new DateTime(2024, 11, 20, 11, 17, 7, 172, DateTimeKind.Local).AddTicks(7234),
+                            Created = new DateTime(2024, 12, 23, 23, 30, 15, 915, DateTimeKind.Local).AddTicks(2141),
                             Email = "johndoe@gmail.com",
                             FirstName = "John",
                             LastName = "Doe",
@@ -80,7 +80,7 @@ namespace LabProject.Migrations
                             Id = 2,
                             BirthDate = new DateOnly(1980, 1, 1),
                             Category = 0,
-                            Created = new DateTime(2024, 11, 20, 11, 17, 7, 172, DateTimeKind.Local).AddTicks(7278),
+                            Created = new DateTime(2024, 12, 23, 23, 30, 15, 915, DateTimeKind.Local).AddTicks(2191),
                             Email = "paulfoe@gmail.com",
                             FirstName = "Paul",
                             LastName = "Foe",
@@ -156,15 +156,15 @@ namespace LabProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a28f6202-260e-4a64-9d9d-f652dd8f9c7a",
-                            ConcurrencyStamp = "a28f6202-260e-4a64-9d9d-f652dd8f9c7a",
+                            Id = "c45e46d9-33f6-43f7-aa64-7c03c2a17841",
+                            ConcurrencyStamp = "c45e46d9-33f6-43f7-aa64-7c03c2a17841",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "8d081c36-50c6-43a4-93c9-69139e5af268",
-                            ConcurrencyStamp = "8d081c36-50c6-43a4-93c9-69139e5af268",
+                            Id = "10f85181-9751-4fde-b700-c4ba2341fe12",
+                            ConcurrencyStamp = "10f85181-9751-4fde-b700-c4ba2341fe12",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -259,33 +259,33 @@ namespace LabProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1aae4df3-e9b2-4ec9-82d9-200ec60ba0e6",
+                            Id = "0b685335-9979-43ff-84e2-dcdd7c3f3175",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b0b41356-5359-4078-af54-d7f859cc1460",
+                            ConcurrencyStamp = "aa8c7e19-fc67-45ad-894f-3e119d44aa47",
                             Email = "artem@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ARTEM@GMAIL.COM",
                             NormalizedUserName = "ARTEM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDF6E0IRTmuX7sfRyEKG56pYstC2lZKaow4WNTHlIjbasAzIv7MhlxqJwBPL8VBjLw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELm1OeAlDzPQG8SdP6vFHkYsaKV/mvGuvVqmUOZ/t1r7JjCESrd0CoOHPmhpD6KSkQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a2de84c6-b9c9-49a4-8458-6879b6076173",
+                            SecurityStamp = "b2ae015d-4a48-412c-81b3-6ef548485299",
                             TwoFactorEnabled = false,
                             UserName = "artem"
                         },
                         new
                         {
-                            Id = "a6a1124c-8ef7-4550-8b9b-4714d419537d",
+                            Id = "2cb34d3a-603e-4431-a69d-b385e8d44076",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c194726-2bf6-49f5-81ac-bca9c6fb4f3b",
+                            ConcurrencyStamp = "13d9cb75-5c86-47cd-a334-62f42e431fc2",
                             Email = "artemuser@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ARTEMUSER@GMAIL.COM",
                             NormalizedUserName = "ARTEMUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDOPqhecWJLQneUJSAl9OV7bDmxzmzXYbNGmpQ38V1wSpvTWWPJiChj/GKyGCJ/5Jg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ8TuJkWcfPM7/WPwiQDGajsF5C+GLBPjkIcQUNgMYCBBplWrJE+xKsdJrq591R+Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "44882779-f64e-4c8e-8380-ba31220a5154",
+                            SecurityStamp = "94106179-4d0d-46c7-a710-eb4e7c9cd7ef",
                             TwoFactorEnabled = false,
                             UserName = "artemuser"
                         });
@@ -317,9 +317,11 @@ namespace LabProject.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
+                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
+                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
@@ -353,18 +355,18 @@ namespace LabProject.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1aae4df3-e9b2-4ec9-82d9-200ec60ba0e6",
-                            RoleId = "a28f6202-260e-4a64-9d9d-f652dd8f9c7a"
+                            UserId = "0b685335-9979-43ff-84e2-dcdd7c3f3175",
+                            RoleId = "c45e46d9-33f6-43f7-aa64-7c03c2a17841"
                         },
                         new
                         {
-                            UserId = "a6a1124c-8ef7-4550-8b9b-4714d419537d",
-                            RoleId = "8d081c36-50c6-43a4-93c9-69139e5af268"
+                            UserId = "2cb34d3a-603e-4431-a69d-b385e8d44076",
+                            RoleId = "10f85181-9751-4fde-b700-c4ba2341fe12"
                         },
                         new
                         {
-                            UserId = "1aae4df3-e9b2-4ec9-82d9-200ec60ba0e6",
-                            RoleId = "8d081c36-50c6-43a4-93c9-69139e5af268"
+                            UserId = "0b685335-9979-43ff-84e2-dcdd7c3f3175",
+                            RoleId = "10f85181-9751-4fde-b700-c4ba2341fe12"
                         });
                 });
 
@@ -374,9 +376,11 @@ namespace LabProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
+                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
