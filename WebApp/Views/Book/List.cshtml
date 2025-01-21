@@ -23,6 +23,8 @@ int endPage = Math.Min(totalPages, currentPage + maxPagesToShow);
         <th>Pages</th>
         <th>Publication Date</th>
         <th>Actions</th>
+        <th>Authors</th>
+        <th>SoldCopies</th>
     </tr>
     </thead>
     <tbody>
@@ -37,9 +39,15 @@ int endPage = Math.Min(totalPages, currentPage + maxPagesToShow);
             <a href="@Url.Action("Details", "Book", new { id = book.BookId })" class="btn btn-info">View</a>
             <a href="@Url.Action("Edit", "Book", new { id = book.BookId })" class="btn btn-warning">Edit</a>
         </td>
+        <td>
+            <a href="@Url.Action("Authors", "Book", new { id = book.BookId })">
+                @book.AuthorCount Author(s)
+            </a>
+        </td>
+        <td>@book.SoldCount</td>
     </tr>
     }
     </tbody>
 </table>
 
-@Html.Partial("_Pagination")
+@Html.Partial("_Pagination");
