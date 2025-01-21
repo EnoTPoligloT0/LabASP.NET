@@ -1,0 +1,40 @@
+﻿@model List<LabProject.Models.GravityModels.AuthorModel>
+
+
+@{
+ViewData["Title"] = "Authors";
+var bookId = ViewData["BookId"];
+}
+
+<h2>Authors for Book @bookId</h2>
+
+@if (Model != null && Model.Any())
+{
+<table class="table">
+    <thead>
+    <tr>
+        <th>Author Name</th>a
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var author in Model)
+    {
+    <tr>
+        <td>@author.AuthorName</td>
+        <td>
+            <p>@author.AuthorId</p>
+
+            <a href="@Url.Action("Details", "Author", new { id = author.AuthorId })" class="btn btn-info">View</a>
+
+            <a href="@Url.Action("Edit", "Author", new { id = author.AuthorId })" class="btn btn-warning">Edit</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+}
+else
+{
+<p>No authors found for this book.</p>
+}
