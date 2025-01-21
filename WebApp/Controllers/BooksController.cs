@@ -16,6 +16,7 @@ namespace LabProject.Controllers
         }
 
 
+        [AllowAnonymous]
         public IActionResult List(int pageNumber = 1, int pageSize = 10)
         {
             var (books, totalBooks) = _bookService.GetBooks(pageNumber, pageSize);
@@ -26,6 +27,8 @@ namespace LabProject.Controllers
             return View(books);
         }
 
+        [AllowAnonymous]
+
         public IActionResult Details(int id)
         {
             var book = _bookService.GetBookById(id);
@@ -34,6 +37,8 @@ namespace LabProject.Controllers
 
             return View(book);
         }
+
+        [AllowAnonymous]
 
         public IActionResult Authors(int id)
         {
@@ -46,6 +51,7 @@ namespace LabProject.Controllers
             return View("BookAuthors", authors);
         }
 
+        [Authorize]
         public IActionResult Add()
         {
             return View();
