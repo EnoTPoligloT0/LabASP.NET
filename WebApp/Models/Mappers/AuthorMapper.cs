@@ -19,6 +19,7 @@ public static class AuthorMapper
     {
         var authorModel = new AuthorModel
         {
+            AuthorId = entity.AuthorId,
             AuthorName = entity.AuthorName,
             Books = new List<BookModel>()
         };
